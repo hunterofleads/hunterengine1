@@ -1019,12 +1019,16 @@
         See exactly what I build and how it works
       </div>
     </div>
-    <div class="vsl-video-wrap" id="vslWrap">
-      <video id="vslVideo" src="saas-hiring-cali.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;"></video>
-      <div class="vsl-play-btn" id="vslPlay">
-        <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
-      </div>
-      <span class="vsl-overlay-text">Watch the 2-min overview — no fluff</span>
+    <div class="vsl-video-wrap" id="vslWrap" style="cursor:default;">
+      <iframe
+        id="vslVideo"
+        src="https://www.youtube.com/embed/iS65TBrniYI?rel=0&modestbranding=1"
+        title="Hunter Engine — 2 minute overview"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="position:absolute;inset:0;width:100%;height:100%;border:none;">
+      </iframe>
     </div>
     <div class="vsl-features">
       <div class="vsl-feat"><span class="vsl-feat-dot"></span>Built for small B2B teams</div>
@@ -1219,20 +1223,6 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-
-  // VSL
-  const vslWrap = document.getElementById('vslWrap');
-  const vslVideo = document.getElementById('vslVideo');
-  const vslPlay = document.getElementById('vslPlay');
-
-  if (vslPlay) {
-    vslPlay.addEventListener('click', () => {
-      vslVideo.style.display = 'block';
-      vslVideo.play();
-      vslPlay.style.display = 'none';
-      document.querySelector('.vsl-overlay-text').style.display = 'none';
-    });
-  }
 
   // Immediate trigger for above-fold
   setTimeout(() => {
