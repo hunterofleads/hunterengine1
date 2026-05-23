@@ -1572,14 +1572,73 @@
 <!-- EMAIL CAPTURE -->
 <div style="padding:0 var(--gutter) 5rem;max-width:var(--max);margin:0 auto;">
   <div class="fade-up" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem;">
-    <h3 style="font-family:var(--font-head);font-size:1.2rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:0.4rem;">Get weekly notes on AI sales systems for founders.</h3>
-    <p style="font-size:0.85rem;color:var(--text-muted);font-weight:300;margin-bottom:1.5rem;">No fluff. No courses. Just what is working in outbound AI right now.</p>
-    <div style="display:flex;flex-direction:column;gap:0.75rem;">
-      <input type="email" placeholder="your@email.com" style="padding:0.85rem 1.1rem;background:var(--bg);border:1px solid var(--border-med);border-radius:var(--radius-pill);font-size:0.88rem;color:var(--text);font-family:var(--font-body);outline:none;width:100%;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border-med)'">
-      <a href="https://tally.so/r/7RJJKR" class="btn-primary" style="text-align:center;padding:0.85rem 1.5rem;">Subscribe</a>
+    <h3 style="font-family:var(--font-head);font-size:1.2rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:0.4rem;">Get daily AI sales notes for founders.</h3>
+    <p style="font-size:0.85rem;color:var(--text-muted);font-weight:300;margin-bottom:1.5rem;">One newsletter a day. What is working in AI outbound right now. Free. No fluff.</p>
+    <div style="display:flex;flex-direction:column;gap:0.75rem;" id="subscribeForm">
+      <input type="email" id="subEmail" placeholder="your@email.com" style="padding:0.85rem 1.1rem;background:var(--bg);border:1px solid var(--border-med);border-radius:var(--radius-pill);font-size:0.88rem;color:var(--text);font-family:var(--font-body);outline:none;width:100%;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border-med)'">
+      <button onclick="subscribeBrevo()" style="background:var(--accent);color:#0a0a0a;font-family:var(--font-head);font-weight:700;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.85rem 1.5rem;border-radius:var(--radius-pill);border:none;cursor:pointer;transition:opacity 0.2s;" id="subBtn">Subscribe</button>
+      <p id="subMsg" style="font-size:0.8rem;color:var(--accent);display:none;text-align:center;font-weight:500;"></p>
     </div>
   </div>
 </div>
+
+<script>
+async function subscribeBrevo() {
+  const email = document.getElementById('subEmail').value.trim();
+  const btn = document.getElementById('subBtn');
+  const msg = document.getElementById('subMsg');
+
+  if (!email || !email.includes('@')) {
+    msg.style.display = 'block';
+    msg.style.color = '#ff4d3a';
+    msg.textContent = 'Please enter a valid email address.';
+    return;
+  }
+
+  btn.textContent = 'Adding you...';
+  btn.style.opacity = '0.7';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    });
+
+    if (res.ok || res.status === 204) {
+      document.getElementById('subscribeForm').innerHTML = `
+        <div style="text-align:center;padding:1rem 0;">
+          <div style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--accent);margin-bottom:0.5rem;">You are in.</div>
+          <p style="font-size:0.85rem;color:var(--text-muted);font-weight:300;">Check your inbox. First issue on its way.</p>
+        </div>`;
+    } else {
+      const data = await res.json();
+      if (data.code === 'duplicate_parameter') {
+        document.getElementById('subscribeForm').innerHTML = `
+          <div style="text-align:center;padding:1rem 0;">
+            <div style="font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:0.5rem;">Already subscribed.</div>
+            <p style="font-size:0.85rem;color:var(--text-muted);font-weight:300;">You are already on the list.</p>
+          </div>`;
+      } else {
+        btn.textContent = 'Subscribe';
+        btn.style.opacity = '1';
+        btn.disabled = false;
+        msg.style.display = 'block';
+        msg.style.color = '#ff4d3a';
+        msg.textContent = 'Something went wrong. Try again.';
+      }
+    }
+  } catch (e) {
+    btn.textContent = 'Subscribe';
+    btn.style.opacity = '1';
+    btn.disabled = false;
+    msg.style.display = 'block';
+    msg.style.color = '#ff4d3a';
+    msg.textContent = 'Something went wrong. Try again.';
+  }
+}
+</script>
 
 <!-- FOOTER -->
 <footer>
