@@ -22,7 +22,7 @@ export default async function handler(req) {
     },
     body: JSON.stringify({
       email: email,
-      listIds: [14],
+      listIds: [19],
       updateEnabled: true
     })
   });
