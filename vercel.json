@@ -1,7 +1,9 @@
 {
-  "version": 2,
+  "cleanUrls": true,
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/blog-ai-news-openai-agents", "dest": "/blog-ai-news-openai-agents.html" },
+    { "src": "/blog-ai-tools-2026", "dest": "/blog-ai-tools-2026.html" },
+    { "src": "/blog-followup-automation", "dest": "/blog-followup-automation.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
