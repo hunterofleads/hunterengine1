@@ -1,40 +1,41 @@
-export default async function handler(req, res) {
+export const config = { runtime: 'edge' };
+
+export default async function handler(req) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return new Response('Method not allowed', { status: 405 });
   }
 
-  const { email } = req.body;
-
+  const { email } = await req.json();
   if (!email || !email.includes('@')) {
-    return res.status(400).json({ error: 'Invalid email' });
+    return new Response(JSON.stringify({ error: 'Invalid email' }), { status: 400 });
   }
 
-  try {
-    const response = await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': process.env.BREVO_API_KEY
-      },
-      body: JSON.stringify({
-        email: email,
-        listIds: [19],
-        updateEnabled: true,
-        attributes: { SOURCE: 'Hunter Engine Website' }
-      })
-    });
+  const apiKey = process.env.BREVO_API_KEY;
 
-    if (response.ok || response.status === 204) {
-      return res.status(200).json({ success: true });
-    }
+  // Create or update contact and add to list 14
+  const res = await fetch('https://api.brevo.com/v3/contacts', {
+    method: 'POST',
+    headers: {
+      'api-key': apiKey,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email,
+      listIds: [14],
+      updateEnabled: true
+    })
+  });
 
-    const data = await response.json();
-    if (data.code === 'duplicate_parameter') {
-      return res.status(200).json({ success: true, duplicate: true });
-    }
-
-    return res.status(400).json({ error: 'Brevo error', detail: data });
-  } catch (e) {
-    return res.status(500).json({ error: 'Server error' });
+  if (res.ok || res.status === 204) {
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
   }
+
+  const err = await res.json();
+  // If contact already exists (code 400 + duplicate), still treat as success
+  if (err.code === 'duplicate_parameter') {
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
+  }
+
+  return new Response(JSON.stringify({ error: 'Failed to subscribe' }), { status: 500 });
 }

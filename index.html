@@ -501,13 +501,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
     if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
   });
 });
-function handleSubscribe(e){
+async function handleSubscribe(e){
   e.preventDefault();
   const email=document.getElementById('newsletter-email').value;
+  const btn=e.target.querySelector('button');
   const msg=document.getElementById('newsletter-msg');
-  msg.style.color='var(--accent)';
-  msg.textContent='You are on the list.';
-  document.getElementById('newsletter-email').value='';
+  btn.textContent='Adding...';
+  btn.disabled=true;
+  try{
+    const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
+    const data=await r.json();
+    if(data.success){
+      msg.style.color='var(--accent)';
+      msg.textContent='You are on the list.';
+      document.getElementById('newsletter-email').value='';
+    } else {
+      msg.style.color='#ef4444';
+      msg.textContent='Something went wrong. Try again.';
+    }
+  } catch(err){
+    msg.style.color='#ef4444';
+    msg.textContent='Something went wrong. Try again.';
+  }
+  btn.textContent='Subscribe';
+  btn.disabled=false;
 }
 function toggleMenu(){
   const nav=document.querySelector('nav');
