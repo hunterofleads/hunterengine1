@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Build a Lead Follow-Up System That Runs While You Sleep | Hunter Engine</title>
+<meta name="description" content="Most founders follow up once and move on. The data says most deals close after five or more touches. Here is the automation system that closes that gap.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--bg:#0a0a0f;--bg-card:#15151f;--accent:#c8ff00;--text:#f5f5f7;--text-dim:#8a8a9a;--text-faint:#4a4a5a;--border:#1e1e2a;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.92);backdrop-filter:blur(30px);border-bottom:1px solid var(--border);height:68px;display:flex;align-items:center;padding:0 32px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:14px}
+.logo-text{font-size:18px;font-weight:800;color:var(--text)}.logo-text span{color:var(--accent)}
+.back{margin-left:auto;color:var(--text-dim);font-size:13px;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:6px}
+.back:hover{color:var(--accent)}
+.hero-section{padding:160px 32px 80px;max-width:820px;margin:0 auto}
+.tag{display:inline-block;background:rgba(200,255,0,0.1);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:24px}
+h1{font-family:'Playfair Display',serif;font-size:52px;font-weight:400;line-height:1.1;letter-spacing:-1px;margin-bottom:24px}
+h1 em{font-style:italic;color:var(--accent)}
+.meta{font-size:13px;color:var(--text-faint);margin-bottom:40px}.meta strong{color:var(--text-dim)}
+.intro{font-size:20px;color:var(--text-dim);line-height:1.7;font-weight:300;border-left:3px solid var(--accent);padding-left:24px;margin-bottom:64px}
+.content{max-width:820px;margin:0 auto;padding:0 32px 120px}
+h2{font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:var(--text);margin:56px 0 20px;letter-spacing:-0.5px}
+h2 em{font-style:italic;color:var(--accent)}
+p{font-size:17px;color:var(--text-dim);line-height:1.8;margin-bottom:20px;font-weight:300}
+strong{color:var(--text);font-weight:600}
+.callout{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:24px 28px;margin:36px 0}
+.callout p{margin:0;font-size:16px}
+.sequence-step{display:flex;gap:20px;align-items:flex-start;padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;margin-bottom:12px}
+.seq-num{background:var(--accent);color:#000;font-weight:900;font-size:13px;padding:4px 10px;border-radius:20px;flex-shrink:0;margin-top:2px}
+.seq-body h4{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
+.seq-body p{font-size:14px;color:var(--text-dim);margin:0;line-height:1.6;font-weight:300}
+.faq-item{border-top:1px solid var(--border);padding:28px 0}
+.faq-q{font-size:17px;font-weight:700;color:var(--text);margin-bottom:12px}
+.faq-a{font-size:16px;color:var(--text-dim);line-height:1.7;font-weight:300}
+.cta-block{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:56px;text-align:center;margin-top:80px}
+.cta-block h3{font-family:'Playfair Display',serif;font-size:32px;font-weight:400;margin-bottom:12px}
+.cta-block h3 em{font-style:italic;color:var(--accent)}
+.cta-block p{font-size:16px;margin-bottom:32px}
+.cta-btn{background:var(--accent);color:#000;padding:18px 44px;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+.cta-btn:hover{text-decoration:none;opacity:0.9}
+footer{border-top:1px solid var(--border);padding:40px 32px;text-align:center;font-size:13px;color:var(--text-faint)}
+footer a{color:var(--text-faint)}footer a:hover{color:var(--accent)}
+@media(max-width:768px){h1{font-size:36px}.hero-section,.content{padding-left:24px;padding-right:24px}.cta-block{padding:32px 24px}}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" class="logo"><div class="logo-icon">H</div><div class="logo-text">Hunter <span>Engine</span></div></a>
+  <a href="/#blog" class="back"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+</header>
+
+<div class="hero-section">
+  <div class="tag">Automation</div>
+  <h1>How to Build a Lead Follow-Up System That Runs <em>While You Sleep</em></h1>
+  <div class="meta"><strong>Barbara · Hunter Engine</strong> &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; 7 min read</div>
+  <p class="intro">Most founders follow up once and move on. Research consistently shows most deals close after five or more touchpoints. The gap between those two numbers is where revenue disappears — and automation is the only thing that reliably closes it.</p>
+</div>
+
+<div class="content">
+
+  <p>The follow-up problem is not a motivation problem. It is a system problem.</p>
+
+  <p>Founders who do not follow up consistently are not lazy. They are busy. A lead comes in, they respond, life gets in the way, and the lead goes cold. They feel guilty about it, make a mental note to follow up, and never do. Or they follow up once and assume silence means no.</p>
+
+  <p>The research says something different. Most buying decisions take time. The person who inquired about your service in week one may be ready to buy in week four. If you stopped following up after the first non-reply, you handed that deal to whoever stayed in touch.</p>
+
+  <div class="callout">
+    <p>You are not losing deals because your offer is wrong. You are losing them because you are not still in the conversation when the prospect is ready to buy.</p>
+  </div>
+
+  <h2>Why Manual Follow-Up <em>Always Fails</em></h2>
+
+  <p>Founders who try to solve the follow-up problem with willpower and task lists always end up in the same place. It works when things are slow. It breaks the moment things get busy. And things getting busy is exactly when consistent follow-up matters most — when you have real pipeline to manage.</p>
+
+  <p>The only follow-up system that actually works is one that runs independently of how busy you are. Not because you are disorganized. Because no human being maintains consistent follow-up across a full pipeline while also running a business. The ones who seem to do it have systems, not better habits.</p>
+
+  <h2>The 5-Touch Sequence That <em>Works</em></h2>
+
+  <p>This is the framework I build for most clients. The specific timing and copy vary by business and ICP, but the structure is consistent because it works across categories.</p>
+
+  <div class="sequence-step">
+    <div class="seq-num">Day 1</div>
+    <div class="seq-body">
+      <h4>Initial Response</h4>
+      <p>Immediate reply to the inquiry. Acknowledges what they asked, answers the key question, offers a specific next step. This one most founders send manually already.</p>
+    </div>
+  </div>
+
+  <div class="sequence-step">
+    <div class="seq-num">Day 3</div>
+    <div class="seq-body">
+      <h4>Value Add</h4>
+      <p>Not a "just checking in." A short message that adds something useful — a relevant case study, a specific insight about their situation, or a direct answer to a question they might have. Shows you were thinking about them, not just chasing a reply.</p>
+    </div>
+  </div>
+
+  <div class="sequence-step">
+    <div class="seq-num">Day 7</div>
+    <div class="seq-body">
+      <h4>Softer Ask</h4>
+      <p>Acknowledge the silence without making it awkward. Ask a simple yes or no question about whether the timing is still right. This touchpoint recovers a surprising number of leads who were genuinely interested but got busy.</p>
+    </div>
+  </div>
+
+  <div class="sequence-step">
+    <div class="seq-num">Day 14</div>
+    <div class="seq-body">
+      <h4>Relevant Proof</h4>
+      <p>A short, specific result from a client in a similar situation. Not a case study pdf. Two sentences and a number. This is the touchpoint that most often produces late replies from prospects who were on the fence.</p>
+    </div>
+  </div>
+
+  <div class="sequence-step">
+    <div class="seq-num">Day 21</div>
+    <div class="seq-body">
+      <h4>Clean Close</h4>
+      <p>The breakup message. Direct, no guilt, no pressure. "I will stop reaching out — if the timing changes, you know where to find me." This one closes more deals than people expect because it removes the pressure that was blocking a response.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:32px;">Five touchpoints over 21 days. All automated. The only action required from you is responding when someone replies positively — which the system routes to you immediately.</p>
+
+  <h2>What the Automation <em>Actually Does</em></h2>
+
+  <p>The system works as one loop. A lead enters — from a form, an inbound email, a LinkedIn inquiry, wherever — and gets tagged and entered into the sequence automatically. Each message goes out on schedule. Replies get detected and routed: positive replies come to you immediately, out-of-office messages pause the sequence and resume after the right delay, unsubscribes are honored automatically.</p>
+
+  <p>You do not touch any of this. The system handles the timing, the routing, and the record-keeping. What you see on your end is a dashboard showing who is in the sequence, where they are, and which ones have replied positively. Your job is limited to the conversations that are actually going somewhere.</p>
+
+  <div class="callout">
+    <p>When I show founders what their pipeline looks like in a working system versus their current spreadsheet or CRM, the most common response is some version of: "I did not realize how much was sitting in here."</p>
+  </div>
+
+  <h2>How Long It Takes to <em>Build</em></h2>
+
+  <p>The copy for the five messages takes about two hours to write properly — if you have clarity on your ICP and your value proposition. The automation build, once the copy is done, takes another three to four hours depending on your existing stack.</p>
+
+  <p>Total: one solid day of focused work. After that, the system runs on its own. The average founder I build this with reclaims 3 to 5 hours per week in manual follow-up time and sees their first recovered lead within the first two weeks.</p>
+
+  <p>The ROI math is not complicated. One recovered deal that would have gone cold typically pays for months of the system running. And the system keeps running whether you are heads-down on a project, on vacation, or just having a busy week.</p>
+
+  <h2>The One Thing That <em>Kills the System</em></h2>
+
+  <p>The most common reason these systems underperform is generic copy. If the messages sound like they came from an automation rather than a person who knows the prospect's situation, response rates drop significantly.</p>
+
+  <p>The fix is specificity. Each message should reference something real — the specific thing they mentioned when they reached out, a problem common to their industry, a result relevant to their situation. That specificity is what makes a follow-up feel like a follow-up from a human rather than a drip campaign from a company.</p>
+
+  <p>Getting the copy right takes more time than the technical build. It is also where most of the results come from.</p>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Will automated follow-up feel impersonal to my prospects?</div>
+    <div class="faq-a">Only if the copy is generic. Automated delivery of a specific, well-written message is indistinguishable from a manually sent one. The goal is not to hide that you use automation — it is to make sure every message would pass a "did a person who knows my situation write this?" test. That standard produces follow-up that converts.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What tools do I need to run this system?</div>
+    <div class="faq-a">At minimum: an email automation tool (Brevo, Instantly, or similar), a way to capture leads into the sequence, and a basic CRM or pipeline view. The specific tools depend on your existing stack. Most founders have most of what they need already — they just need it connected.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What if a prospect replies somewhere in the middle of the sequence?</div>
+    <div class="faq-a">The system detects replies and stops the sequence automatically. The prospect gets routed to you for a real conversation. The automation only runs as long as there is no response — the moment someone engages, it hands off to you immediately.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How do I know if the system is working?</div>
+    <div class="faq-a">Measure two things: reply rate across the sequence (which touchpoints are getting responses) and close rate on leads that went through the full sequence versus ones that did not. Within 30 days you will have enough data to see where the system is working and where the copy needs adjustment.</div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Want This Built for <em>Your Pipeline?</em></h3>
+    <p>The ops audit is the starting point. 30 minutes to map your current follow-up situation and figure out exactly what to build.</p>
+    <a href="https://tally.so/r/44pWdd" class="cta-btn"><i class="fas fa-calendar-check"></i> Book a Free AI Ops Audit</a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/">Hunter Engine</a> &nbsp;·&nbsp; <a href="/#blog">Blog</a> &nbsp;·&nbsp; &copy; 2026
+</footer>
+</body>
+</html>
