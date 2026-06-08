@@ -5,226 +5,260 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hunter Engine | AI Systems for Clinics and Fitness Studios</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-:root{--bg:#0a0a0f;--bg-light:#111118;--bg-card:#15151f;--accent:#c8ff00;--accent-dim:#8ab300;--text:#f5f5f7;--text-dim:#8a8a9a;--text-faint:#4a4a5a;--border:#1e1e2a;--glow:0 0 40px rgba(200,255,0,0.15);--radius:20px;--transition:all 0.4s cubic-bezier(0.4,0,0.2,1);--section-pad:120px;--section-pad-mobile:80px;}
+:root{
+  --bg:#F7F5F0;
+  --bg-light:#FFFFFF;
+  --bg-card:#FFFFFF;
+  --bg-section:#EEF0EB;
+  --accent:#4A7C59;
+  --accent-light:#D4E6D9;
+  --accent-hover:#3A6347;
+  --text:#1C2B1E;
+  --text-dim:#5A6B5E;
+  --text-faint:#9BA89D;
+  --border:#DDD8CE;
+  --radius:16px;
+  --transition:all 0.35s cubic-bezier(0.4,0,0.2,1);
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-::selection{background:var(--accent);color:var(--bg)}
-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,15,0.85);backdrop-filter:blur(30px);border-bottom:1px solid var(--border);transition:var(--transition)}
-.header-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-icon{width:36px;height:36px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--bg);font-weight:900;font-size:16px}
-.logo-text{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.5px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:#fff}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(247,245,240,0.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:var(--transition)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:36px;height:36px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px}
+.logo-text{font-size:19px;font-weight:700;color:var(--text);letter-spacing:-0.3px}
 .logo-text span{color:var(--accent)}
-nav{display:flex;align-items:center;gap:36px}
-nav a{text-decoration:none;color:var(--text-dim);font-weight:500;font-size:14px;transition:var(--transition);position:relative}
+nav{display:flex;align-items:center;gap:32px}
+nav a{text-decoration:none;color:var(--text-dim);font-weight:500;font-size:14px;transition:var(--transition)}
 nav a:hover{color:var(--accent)}
-.header-cta{background:transparent;color:var(--accent);padding:10px 24px;border-radius:50px;font-weight:600;font-size:13px;text-decoration:none;transition:var(--transition);border:1.5px solid var(--accent)}
-.header-cta:hover{background:var(--accent);color:var(--bg)}
+.header-cta{background:var(--accent);color:#fff;padding:10px 22px;border-radius:50px;font-weight:600;font-size:13px;text-decoration:none;transition:var(--transition)}
+.header-cta:hover{background:var(--accent-hover)}
 .mobile-toggle{display:none;background:none;border:none;font-size:22px;color:var(--text);cursor:pointer}
 
 /* HERO */
-.hero{padding:200px 32px 140px;position:relative;overflow:hidden;text-align:center}
-.hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(200,255,0,0.06) 0%,transparent 60%);border-radius:50%;pointer-events:none}
-.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
-.hero-label{display:inline-flex;align-items:center;gap:10px;background:var(--bg-card);border:1px solid var(--border);padding:8px 20px;border-radius:50px;font-size:12px;font-weight:600;color:var(--text-dim);margin-bottom:32px}
-.hero-label .pulse{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+.hero{padding:160px 32px 100px;position:relative;overflow:hidden;text-align:center;background:var(--bg)}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(74,124,89,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.hero-label{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);color:var(--accent);padding:6px 18px;border-radius:50px;font-size:12px;font-weight:600;letter-spacing:0.5px;margin-bottom:28px}
+.hero-label .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-.hero h1{font-family:'Playfair Display',serif;font-size:72px;font-weight:400;line-height:1.05;color:var(--text);margin-bottom:28px;letter-spacing:-1.5px}
+.hero h1{font-family:'Playfair Display',serif;font-size:64px;font-weight:400;line-height:1.08;color:var(--text);margin-bottom:24px;letter-spacing:-1px}
 .hero h1 em{font-style:italic;color:var(--accent)}
-.hero-sub-bold{font-size:20px;color:var(--text);font-weight:600;margin-bottom:12px}
-.hero-sub{font-size:18px;color:var(--text-dim);max-width:600px;margin:0 auto 44px;line-height:1.6;font-weight:300}
-.hero-buttons{display:flex;gap:16px;justify-content:center;margin-bottom:60px}
-.btn-primary{background:var(--accent);color:var(--bg);padding:18px 44px;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;transition:var(--transition);border:none;display:inline-flex;align-items:center;gap:10px;box-shadow:var(--glow)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(200,255,0,0.25)}
-.btn-ghost{background:transparent;color:var(--text);padding:18px 44px;border-radius:50px;font-weight:600;font-size:15px;text-decoration:none;transition:var(--transition);border:1.5px solid var(--border);display:inline-flex;align-items:center;gap:10px}
+.hero-sub-bold{font-size:18px;color:var(--text);font-weight:500;margin-bottom:10px}
+.hero-sub{font-size:17px;color:var(--text-dim);max-width:560px;margin:0 auto 40px;line-height:1.7;font-weight:300}
+.hero-buttons{display:flex;gap:14px;justify-content:center;margin-bottom:64px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:16px 40px;border-radius:50px;font-weight:600;font-size:15px;text-decoration:none;transition:var(--transition);display:inline-flex;align-items:center;gap:10px;box-shadow:0 4px 24px rgba(74,124,89,0.25)}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 8px 32px rgba(74,124,89,0.3)}
+.btn-ghost{background:#fff;color:var(--text);padding:16px 40px;border-radius:50px;font-weight:500;font-size:15px;text-decoration:none;transition:var(--transition);border:1.5px solid var(--border);display:inline-flex;align-items:center;gap:10px}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 .hero-stats{display:flex;justify-content:center;gap:64px;flex-wrap:wrap}
 .hero-stat{text-align:center}
-.hero-stat-num{font-size:40px;font-weight:800;color:var(--accent);line-height:1}
-.hero-stat-label{font-size:13px;color:var(--text-dim);margin-top:6px;font-weight:500;letter-spacing:0.5px}
+.hero-stat-num{font-size:36px;font-weight:800;color:var(--accent);line-height:1}
+.hero-stat-label{font-size:12px;color:var(--text-dim);margin-top:6px;font-weight:500;letter-spacing:0.3px}
 
 /* PAIN */
-.pain{padding:140px 32px;background:var(--bg);position:relative}
-.pain::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-.pain-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
-.pain-left h2{font-family:'Playfair Display',serif;font-size:48px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:24px;letter-spacing:-0.5px}
+.pain{padding:120px 32px;background:var(--bg-light);position:relative}
+.pain::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
+.pain-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.section-tag{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.pain-left h2{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;line-height:1.15;color:var(--text);margin-bottom:16px;letter-spacing:-0.5px}
 .pain-left h2 em{font-style:italic;color:var(--accent)}
-.pain-left>p{font-size:18px;color:var(--text-dim);line-height:1.6;margin-bottom:56px;font-weight:300}
-.pain-visual{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;position:relative;overflow:hidden}
-.pain-visual::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),transparent)}
-.pain-metric{display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--border)}
+.pain-left>p{font-size:17px;color:var(--text-dim);line-height:1.7;margin-bottom:40px;font-weight:300}
+.pain-visual{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:28px;position:relative;overflow:hidden}
+.pain-visual::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);border-radius:20px 20px 0 0}
+.pain-metric{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
 .pain-metric:last-child{border-bottom:none}
-.pain-metric-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;background:var(--bg);border:1px solid var(--border)}
-.pain-metric-icon.red{color:#ef4444}.pain-metric-icon.orange{color:#f59e0b}.pain-metric-icon.blue{color:#60a5fa}.pain-metric-icon.purple{color:#a78bfa}
+.pain-metric-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.pain-metric-icon.red{background:#FEF2F2;color:#DC2626}
+.pain-metric-icon.orange{background:#FFF7ED;color:#EA580C}
+.pain-metric-icon.blue{background:#EFF6FF;color:#2563EB}
+.pain-metric-icon.purple{background:#F5F3FF;color:#7C3AED}
+.pain-metric-icon.green{background:#F0FDF4;color:#16A34A}
 .pain-metric-info{flex:1}
-.pain-metric-info h4{font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px}
-.pain-metric-info p{font-size:13px;color:var(--text-dim);margin:0}
-.pain-metric-hours{font-size:22px;font-weight:800;color:var(--accent);white-space:nowrap}
-.pain-metric-total{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:20px;border-top:2px solid var(--border)}
-.pain-metric-total span{font-size:15px;font-weight:600;color:var(--text)}
-.pain-metric-total strong{font-size:28px;font-weight:900;color:var(--accent)}
-.pain-cost-callout{margin-top:16px;padding:16px 20px;background:rgba(200,255,0,0.05);border:1px solid rgba(200,255,0,0.15);border-radius:12px;font-size:14px;color:var(--text-dim);line-height:1.5}
-.pain-cost-callout strong{color:var(--accent)}
+.pain-metric-info h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:1px}
+.pain-metric-info p{font-size:12px;color:var(--text-dim);margin:0}
+.pain-metric-hours{font-size:18px;font-weight:800;color:var(--accent);white-space:nowrap}
+.pain-metric-total{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:2px solid var(--border)}
+.pain-metric-total span{font-size:14px;font-weight:600;color:var(--text)}
+.pain-metric-total strong{font-size:24px;font-weight:900;color:var(--accent)}
+.pain-cost-callout{margin-top:14px;padding:14px 18px;background:var(--accent-light);border-radius:10px;font-size:13px;color:var(--text);line-height:1.5}
+.pain-cost-callout strong{color:var(--accent);font-weight:700}
+
+/* WHAT WE BUILD */
+.what{padding:120px 32px;background:var(--bg)}
+.what::before{content:'';display:block;height:1px;background:var(--border);margin-bottom:120px;margin-top:-120px}
+.what-inner{max-width:1160px;margin:0 auto}
+.what-header{text-align:center;margin-bottom:64px}
+.what-header h2{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;line-height:1.15;color:var(--text);margin-bottom:12px;letter-spacing:-0.5px}
+.what-header h2 em{font-style:italic;color:var(--accent)}
+.what-header p{font-size:17px;color:var(--text-dim);font-weight:300;max-width:520px;margin:0 auto}
+.what-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.what-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:var(--transition)}
+.what-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(74,124,89,0.1)}
+.what-icon{width:44px;height:44px;background:var(--accent-light);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:18px;margin-bottom:20px}
+.what-card h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px}
+.what-card p{font-size:14px;color:var(--text-dim);line-height:1.6;font-weight:300}
 
 /* HOW */
-.how{padding:140px 32px;text-align:center;position:relative}
-.how::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+.how{padding:120px 32px;background:var(--bg-section);position:relative}
+.how::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
 .how-inner{max-width:1140px;margin:0 auto}
-.how h2{font-family:'Playfair Display',serif;font-size:48px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:20px;letter-spacing:-0.5px}
-.how h2 em{font-style:italic;color:var(--accent)}
-.how-inner>p{font-size:18px;color:var(--text-dim);margin-bottom:80px;font-weight:300}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
-.step{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:40px 32px;text-align:left;transition:var(--transition);position:relative}
-.step:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--glow)}
-.step-num{font-size:48px;font-weight:900;color:var(--text-faint);line-height:1;margin-bottom:16px;transition:var(--transition)}
+.how-header{text-align:center;margin-bottom:64px}
+.how-header h2{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;line-height:1.15;color:var(--text);margin-bottom:12px;letter-spacing:-0.5px}
+.how-header h2 em{font-style:italic;color:var(--accent)}
+.how-header p{font-size:17px;color:var(--text-dim);font-weight:300}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:36px 28px;text-align:left;transition:var(--transition);position:relative}
+.step:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(74,124,89,0.1)}
+.step-num{font-size:40px;font-weight:900;color:var(--accent-light);line-height:1;margin-bottom:16px}
 .step:hover .step-num{color:var(--accent)}
-.step h3{font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px}
-.step p{font-size:14px;color:var(--text-dim);line-height:1.5}
+.step h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px}
+.step p{font-size:14px;color:var(--text-dim);line-height:1.6;font-weight:300}
 
 /* OUTCOMES */
-.outcomes{padding:140px 32px;background:var(--bg-light);position:relative}
-.outcomes::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-.outcomes-inner{max-width:1100px;margin:0 auto;text-align:center;padding-top:20px}
-.outcomes h2{font-family:'Playfair Display',serif;font-size:48px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:24px;letter-spacing:-0.5px}
+.outcomes{padding:120px 32px;background:var(--bg-light);position:relative}
+.outcomes::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
+.outcomes-inner{max-width:1100px;margin:0 auto;text-align:center}
+.outcomes h2{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;line-height:1.15;color:var(--text);margin-bottom:12px;letter-spacing:-0.5px}
 .outcomes h2 em{font-style:italic;color:var(--accent)}
-.outcomes-inner>p{font-size:18px;color:var(--text-dim);margin-bottom:80px;font-weight:300}
-.outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.outcome-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:48px 36px;text-align:center;transition:var(--transition);display:flex;flex-direction:column;align-items:center}
-.outcome-card:hover{border-color:var(--accent);transform:translateY(-6px);box-shadow:var(--glow)}
-.outcome-num{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:12px}
-.outcome-label{font-size:13px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
-.outcome-desc{font-size:15px;color:var(--text-dim);line-height:1.5}
+.outcomes-inner>p{font-size:17px;color:var(--text-dim);margin-bottom:56px;font-weight:300}
+.outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.outcome-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:40px 32px;text-align:center;transition:var(--transition)}
+.outcome-card:hover{border-color:var(--accent);background:#fff}
+.outcome-num{font-size:52px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:10px}
+.outcome-label{font-size:12px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+.outcome-desc{font-size:14px;color:var(--text-dim);line-height:1.6;font-weight:300}
 
 /* PRICING */
-.pricing{padding:140px 32px;position:relative}
-.pricing::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-.pricing-inner{max-width:800px;margin:0 auto;text-align:center}
-.pricing h2{font-family:'Playfair Display',serif;font-size:48px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:20px;letter-spacing:-0.5px}
+.video-section{padding:80px 32px 0;background:var(--bg)}
+.video-section .video-inner{max-width:860px;margin:0 auto}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border);box-shadow:0 8px 40px rgba(74,124,89,0.08)}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.pricing{padding:80px 32px 120px;background:var(--bg);position:relative}
+.pricing::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
+.pricing-inner{max-width:760px;margin:0 auto;text-align:center}
+.pricing h2{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;line-height:1.15;color:var(--text);margin-bottom:12px;letter-spacing:-0.5px}
 .pricing h2 em{font-style:italic;color:var(--accent)}
-.pricing-statement{font-size:20px;color:var(--text-dim);line-height:1.7;margin-bottom:16px;font-weight:300}
-.pricing-start{font-size:16px;color:var(--text-dim);margin-bottom:48px;font-weight:400}
-.pricing-start strong{color:var(--text)}
+.pricing-box{background:#fff;border:1px solid var(--border);border-radius:20px;padding:48px;margin:40px 0}
+.pricing-statement{font-size:18px;color:var(--text-dim);line-height:1.7;margin-bottom:16px;font-weight:300}
+.pricing-start{font-size:15px;color:var(--text-dim);margin-bottom:36px}
+.pricing-start strong{color:var(--accent);font-weight:700}
 
-/* TESTIMONIALS */
-.testimonials{padding:140px 32px;background:var(--bg-light);position:relative}
-.testimonials::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-.testimonials-inner{max-width:800px;margin:0 auto;text-align:center}
-.testimonials h2{font-family:'Playfair Display',serif;font-size:48px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:24px;letter-spacing:-0.5px}
+/* TESTIMONIAL */
+.testimonials{padding:120px 32px;background:var(--bg-section);position:relative}
+.testimonials::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
+.testimonials-inner{max-width:760px;margin:0 auto;text-align:center}
+.testimonials h2{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;line-height:1.15;color:var(--text);margin-bottom:12px;letter-spacing:-0.5px}
 .testimonials h2 em{font-style:italic;color:var(--accent)}
-.testimonials-inner>p{font-size:18px;color:var(--text-dim);margin-bottom:80px;font-weight:300}
-.t-single{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:56px;text-align:left;position:relative}
-.t-single::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),transparent);border-radius:var(--radius) var(--radius) 0 0}
-.t-stars{color:var(--accent);font-size:14px;margin-bottom:24px;letter-spacing:3px}
-.t-text{font-family:'Playfair Display',serif;font-size:24px;font-style:italic;color:var(--text);line-height:1.5;margin-bottom:32px}
-.t-author{display:flex;align-items:center;gap:16px}
-.t-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--bg);font-weight:800;font-size:16px;background:var(--accent)}
-.t-name{font-size:15px;font-weight:700;color:var(--text)}
-.t-role{font-size:13px;color:var(--text-dim)}
-.t-result{margin-top:28px;padding-top:24px;border-top:1px solid var(--border);font-size:14px;font-weight:600;color:var(--accent)}
-
-/* CTA */
-.cta-section{padding:180px 32px;text-align:center;position:relative;overflow:hidden}
-.cta-section::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(200,255,0,0.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
-.cta-section::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-.cta-inner{max-width:700px;margin:0 auto;position:relative;z-index:1}
-.cta-section h2{font-family:'Playfair Display',serif;font-size:52px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:20px;letter-spacing:-0.5px}
-.cta-section h2 em{font-style:italic;color:var(--accent)}
-.cta-inner>p{font-size:18px;color:var(--text-dim);margin-bottom:60px;font-weight:300;line-height:1.6}
-.cta-btn{background:var(--accent);color:var(--bg);padding:22px 56px;border-radius:50px;font-weight:900;font-size:17px;text-decoration:none;transition:var(--transition);border:none;display:inline-flex;align-items:center;gap:12px;box-shadow:0 0 40px rgba(200,255,0,0.2);letter-spacing:-0.3px}
-.cta-btn:hover{transform:translateY(-3px);box-shadow:0 0 60px rgba(200,255,0,0.35)}
-.cta-trust{display:flex;justify-content:center;gap:40px;margin-top:48px;flex-wrap:wrap}
-.cta-trust span{font-size:13px;color:var(--text-dim);font-weight:500}
-
-/* FOOTER */
-footer{padding:60px 32px 40px;background:var(--bg);border-top:1px solid var(--border)}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
-.footer-left{display:flex;align-items:center;gap:12px}
-.footer-left .logo-icon{width:28px;height:28px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--bg);font-weight:900;font-size:12px}
-.footer-left span{font-size:16px;font-weight:800;color:var(--text)}
-.footer-left span em{color:var(--accent);font-style:normal}
-.footer-right{display:flex;gap:32px}
-.footer-right a{color:var(--text-dim);text-decoration:none;font-size:13px;font-weight:500;transition:var(--transition)}
-.footer-right a:hover{color:var(--accent)}
+.testimonials-inner>p{font-size:17px;color:var(--text-dim);margin-bottom:48px;font-weight:300}
+.t-single{background:#fff;border:1px solid var(--border);border-radius:20px;padding:48px;text-align:left;position:relative}
+.t-single::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);border-radius:20px 20px 0 0}
+.t-stars{color:var(--accent);font-size:16px;margin-bottom:20px;letter-spacing:3px}
+.t-text{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--text);line-height:1.55;margin-bottom:28px}
+.t-author{display:flex;align-items:center;gap:14px}
+.t-avatar{width:44px;height:44px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px}
+.t-name{font-size:14px;font-weight:700;color:var(--text)}
+.t-role{font-size:12px;color:var(--text-dim)}
+.t-result{margin-top:24px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;font-weight:600;color:var(--accent)}
 
 /* FAQ */
-.faq{padding:140px 32px;background:var(--bg);position:relative}
-.faq::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-.faq-inner{max-width:800px;margin:0 auto}
-.faq h2{font-family:'Playfair Display',serif;font-size:48px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:20px;letter-spacing:-0.5px;text-align:center}
+.faq{padding:120px 32px;background:var(--bg-light);position:relative}
+.faq::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq h2{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;line-height:1.15;color:var(--text);margin-bottom:12px;letter-spacing:-0.5px;text-align:center}
 .faq h2 em{font-style:italic;color:var(--accent)}
-.faq-intro{font-size:18px;color:var(--text-dim);margin-bottom:64px;font-weight:300;text-align:center}
-.faq-item{border-bottom:1px solid var(--border);padding:28px 0}
-.faq-item:last-child{border-bottom:none}
-.faq-q{font-size:18px;font-weight:700;color:var(--text);margin-bottom:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
-.faq-q i{color:var(--accent);font-size:14px;margin-top:4px;flex-shrink:0;transition:var(--transition)}
-.faq-a{font-size:16px;color:var(--text-dim);line-height:1.7;font-weight:300}
+.faq-intro{font-size:17px;color:var(--text-dim);margin-bottom:56px;font-weight:300;text-align:center}
+.faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+.faq-item:first-of-type{border-top:1px solid var(--border)}
+.faq-q{font-size:17px;font-weight:600;color:var(--text);margin-bottom:10px}
+.faq-a{font-size:15px;color:var(--text-dim);line-height:1.7;font-weight:300}
 
 /* BLOG */
-.blog{padding:140px 32px;background:var(--bg-light);position:relative}
-.blog::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+.blog{padding:120px 32px;background:var(--bg);position:relative}
+.blog::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
 .blog-inner{max-width:1100px;margin:0 auto}
-.blog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:64px;flex-wrap:wrap;gap:24px}
-.blog-header h2{font-family:'Playfair Display',serif;font-size:48px;font-weight:400;line-height:1.1;color:var(--text);letter-spacing:-0.5px}
+.blog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:20px}
+.blog-header h2{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;line-height:1.15;color:var(--text);letter-spacing:-0.5px}
 .blog-header h2 em{font-style:italic;color:var(--accent)}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.blog-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:36px;transition:var(--transition);display:flex;flex-direction:column}
-.blog-card:hover{border-color:var(--accent);transform:translateY(-4px)}
-.blog-tag{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
-.blog-card h3{font-size:20px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:12px}
-.blog-card p{font-size:14px;color:var(--text-dim);line-height:1.6;flex:1;margin-bottom:24px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.blog-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:var(--transition);display:flex;flex-direction:column}
+.blog-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 8px 32px rgba(74,124,89,0.1)}
+.blog-tag{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+.blog-card h3{font-size:18px;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:10px}
+.blog-card p{font-size:14px;color:var(--text-dim);line-height:1.6;flex:1;margin-bottom:20px;font-weight:300}
 .blog-meta{font-size:12px;color:var(--text-faint);font-weight:500}
-.blog-read{font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;margin-top:16px;display:inline-flex;align-items:center;gap:6px}
+.blog-read{font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;margin-top:14px;display:inline-flex;align-items:center;gap:6px}
 .blog-read:hover{gap:10px}
 
 /* NEWSLETTER */
-.newsletter{padding:100px 32px;background:var(--bg);position:relative}
-.newsletter::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-.newsletter-inner{max-width:580px;margin:0 auto;text-align:center}
-.newsletter h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:var(--text);margin-bottom:12px;letter-spacing:-0.5px}
+.newsletter{padding:80px 32px;background:var(--bg-section);position:relative}
+.newsletter::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
+.newsletter-inner{max-width:540px;margin:0 auto;text-align:center}
+.newsletter h2{font-family:'Playfair Display',serif;font-size:34px;font-weight:400;color:var(--text);margin-bottom:10px;letter-spacing:-0.3px}
 .newsletter h2 em{font-style:italic;color:var(--accent)}
-.newsletter p{font-size:16px;color:var(--text-dim);margin-bottom:36px;font-weight:300;line-height:1.6}
-.newsletter-form{display:flex;gap:12px;max-width:460px;margin:0 auto}
-.newsletter-form input{flex:1;background:var(--bg-card);border:1px solid var(--border);border-radius:50px;padding:14px 24px;font-size:14px;color:var(--text);font-family:'Inter',sans-serif;outline:none;transition:var(--transition)}
+.newsletter p{font-size:15px;color:var(--text-dim);margin-bottom:32px;font-weight:300;line-height:1.6}
+.newsletter-form{display:flex;gap:10px;max-width:440px;margin:0 auto}
+.newsletter-form input{flex:1;background:#fff;border:1px solid var(--border);border-radius:50px;padding:13px 22px;font-size:14px;color:var(--text);font-family:'Inter',sans-serif;outline:none;transition:var(--transition)}
 .newsletter-form input:focus{border-color:var(--accent)}
 .newsletter-form input::placeholder{color:var(--text-faint)}
-.newsletter-form button{background:var(--accent);color:var(--bg);border:none;border-radius:50px;padding:14px 28px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:var(--transition);white-space:nowrap}
-.newsletter-form button:hover{transform:translateY(-2px);box-shadow:var(--glow)}
-.newsletter-note{font-size:12px;color:var(--text-faint);margin-top:16px}
+.newsletter-form button{background:var(--accent);color:#fff;border:none;border-radius:50px;padding:13px 24px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:var(--transition);white-space:nowrap}
+.newsletter-form button:hover{background:var(--accent-hover)}
+.newsletter-note{font-size:12px;color:var(--text-faint);margin-top:14px}
 
-.fade-in{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease}
+/* CTA */
+.cta-section{padding:140px 32px;background:var(--accent);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none}
+.cta-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
+.cta-section h2{font-family:'Playfair Display',serif;font-size:48px;font-weight:400;line-height:1.1;color:#fff;margin-bottom:16px;letter-spacing:-0.5px}
+.cta-section h2 em{font-style:italic;color:rgba(255,255,255,0.75)}
+.cta-inner>p{font-size:18px;color:rgba(255,255,255,0.8);margin-bottom:48px;font-weight:300;line-height:1.6}
+.cta-btn{background:#fff;color:var(--accent);padding:18px 48px;border-radius:50px;font-weight:700;font-size:16px;text-decoration:none;transition:var(--transition);display:inline-flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,0.15)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+.cta-trust{display:flex;justify-content:center;gap:36px;margin-top:40px;flex-wrap:wrap}
+.cta-trust span{font-size:13px;color:rgba(255,255,255,0.7);font-weight:400;display:flex;align-items:center;gap:6px}
+.cta-trust i{color:rgba(255,255,255,0.9)}
+
+/* FOOTER */
+footer{padding:48px 32px 36px;background:var(--text);color:rgba(255,255,255,0.6)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-left{display:flex;align-items:center;gap:10px}
+.footer-logo-icon{width:28px;height:28px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:12px}
+.footer-left span{font-size:15px;font-weight:700;color:#fff}
+.footer-left span em{color:var(--accent);font-style:normal}
+.footer-right{display:flex;gap:28px}
+.footer-right a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;font-weight:400;transition:var(--transition)}
+.footer-right a:hover{color:#fff}
+
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 
 @media(max-width:1024px){
-  .hero h1{font-size:52px}
   .pain-inner{grid-template-columns:1fr;gap:48px}
-  .outcome-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+  .what-grid{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr)}
-  .blog-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto}
+  .outcome-grid{grid-template-columns:repeat(2,1fr)}
+  .blog-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}
 }
-@media(max-width:640px){.steps{grid-template-columns:1fr}}
-@media(max-width:768px){
-  .hero h1{font-size:40px}
-  .hero{padding:140px 24px 100px}
-  .hero-stats{gap:32px}
-  .hero-stat-num{font-size:32px}
-  .pain-left h2{font-size:36px}
-  .how h2{font-size:36px}
-  .outcomes h2{font-size:36px}
-  .pricing h2{font-size:36px}
-  .testimonials h2{font-size:36px}
-  .cta-section h2{font-size:40px}
+@media(max-width:640px){
+  .hero h1{font-size:44px}
+  .steps{grid-template-columns:1fr}
+  .what-grid{grid-template-columns:1fr}
+  .outcome-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto}
   nav{display:none}
   .mobile-toggle{display:block}
   .hero-buttons{flex-direction:column;align-items:center}
   .footer-inner{flex-direction:column;text-align:center}
   .t-single{padding:32px 24px}
-  .t-text{font-size:20px}
+  .cta-section h2{font-size:36px}
+  .hero-stats{gap:36px}
 }
 </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -241,7 +275,7 @@ footer{padding:60px 32px 40px;background:var(--bg);border-top:1px solid var(--bo
       <a href="#pricing">Pricing</a>
       <a href="#blog">Blog</a>
       <a href="#faq">FAQ</a>
-      <a href="#contact" class="header-cta">Book a Free AI Ops Audit</a>
+      <a href="#contact" class="header-cta">Book a Free Audit</a>
     </nav>
     <button class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
   </div>
@@ -249,7 +283,7 @@ footer{padding:60px 32px 40px;background:var(--bg);border-top:1px solid var(--bo
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-label"><span class="pulse"></span>AI Systems for Clinics and Fitness Studios</div>
+    <div class="hero-label"><span class="dot"></span>AI Systems for Clinics and Fitness Studios</div>
     <h1>Stop Losing Clients to <em>Slow</em> Follow-Up</h1>
     <p class="hero-sub-bold">I build AI systems for clinics and fitness studios that are losing clients to slow responses and manual admin.</p>
     <p class="hero-sub">Automated lead capture, booking, follow-up, and review requests. Done for you. Live in 7 days.</p>
@@ -269,56 +303,107 @@ footer{padding:60px 32px 40px;background:var(--bg);border-top:1px solid var(--bo
 <section class="pain" id="pain">
   <div class="pain-inner">
     <div class="pain-left fade-in">
+      <div class="section-tag">The Problem</div>
       <h2>You Are Losing Clients <em>Every Single Week</em></h2>
       <p>Here is exactly where they go and what it costs your clinic or studio.</p>
       <div class="pain-visual">
         <div class="pain-metric">
-          <div class="pain-metric-icon red"><i class="fas fa-fire"></i></div>
+          <div class="pain-metric-icon red"><i class="fas fa-bolt"></i></div>
           <div class="pain-metric-info"><h4>Enquiries with no fast reply</h4><p>They called the next clinic on the list.</p></div>
           <div class="pain-metric-hours">3.1h</div>
         </div>
         <div class="pain-metric">
-          <div class="pain-metric-icon orange"><i class="fas fa-chart-bar"></i></div>
+          <div class="pain-metric-icon orange"><i class="fas fa-calendar-xmark"></i></div>
           <div class="pain-metric-info"><h4>No-shows with no reminder system</h4><p>Empty slots you could have filled.</p></div>
           <div class="pain-metric-hours">2.8h</div>
         </div>
         <div class="pain-metric">
-          <div class="pain-metric-icon blue"><i class="fas fa-pen"></i></div>
+          <div class="pain-metric-icon blue"><i class="fas fa-comment-dots"></i></div>
           <div class="pain-metric-info"><h4>Booking back-and-forth by text and DM</h4><p>Manual scheduling that eats your day.</p></div>
           <div class="pain-metric-hours">4.5h</div>
         </div>
         <div class="pain-metric">
-          <div class="pain-metric-icon purple"><i class="fas fa-clipboard-list"></i></div>
+          <div class="pain-metric-icon purple"><i class="fas fa-star"></i></div>
           <div class="pain-metric-info"><h4>Review requests never sent consistently</h4><p>Stars you earned but never collected.</p></div>
           <div class="pain-metric-hours">3.2h</div>
         </div>
         <div class="pain-metric">
-          <div class="pain-metric-icon red"><i class="fas fa-moon"></i></div>
+          <div class="pain-metric-icon green"><i class="fas fa-rotate-left"></i></div>
           <div class="pain-metric-info"><h4>Lapsed clients never re-engaged</h4><p>Revenue sitting in your contact list untouched.</p></div>
           <div class="pain-metric-hours">1.9h</div>
         </div>
-        <div class="pain-metric-total">
-          <span>Total per week</span>
-          <strong>15.5 hrs</strong>
-        </div>
-        <div class="pain-cost-callout">
-          Most clinics and studios are losing 4 to 8 new clients per month just from slow or missing follow-up. A working system stops that immediately.
-        </div>
+        <div class="pain-metric-total"><span>Total per week</span><strong>15.5 hrs</strong></div>
+        <div class="pain-cost-callout">Most clinics and studios are losing <strong>4 to 8 new clients per month</strong> just from slow or missing follow-up. A working system stops that immediately.</div>
       </div>
     </div>
 
-    <div class="pain-visual fade-in" style="position:relative;">
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:40px;text-align:center;">
-        <div style="width:80px;height:80px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;color:var(--bg);font-size:32px;"><i class="fas fa-robot"></i></div>
-        <h3 style="font-size:24px;font-weight:800;color:var(--text);margin-bottom:12px;">Hunter Engine</h3>
-        <p style="font-size:15px;color:var(--text-dim);line-height:1.6;margin-bottom:28px;">Your AI front desk. Built around your clinic or studio. Running 24/7 so you never miss a lead.</p>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border-radius:12px;border:1px solid var(--border);"><i class="fas fa-check" style="color:var(--accent);font-size:12px;"></i><span style="font-size:14px;color:var(--text-dim);">Live in 7 days, no tech skills needed</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border-radius:12px;border:1px solid var(--border);"><i class="fas fa-check" style="color:var(--accent);font-size:12px;"></i><span style="font-size:14px;color:var(--text-dim);">Every enquiry gets an instant reply, any time of day</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border-radius:12px;border:1px solid var(--border);"><i class="fas fa-check" style="color:var(--accent);font-size:12px;"></i><span style="font-size:14px;color:var(--text-dim);">Appointments booked automatically, reminders sent</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border-radius:12px;border:1px solid var(--border);"><i class="fas fa-check" style="color:var(--accent);font-size:12px;"></i><span style="font-size:14px;color:var(--text-dim);">Review requests sent after every visit</span></div>
-          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border-radius:12px;border:1px solid var(--border);"><i class="fas fa-check" style="color:var(--accent);font-size:12px;"></i><span style="font-size:14px;color:var(--text-dim);">Lapsed clients re-engaged on autopilot</span></div>
+    <div class="fade-in">
+      <div class="section-tag">The Solution</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:var(--text);margin-bottom:16px;letter-spacing:-0.5px;">Your <em style="font-style:italic;color:var(--accent);">AI Front Desk</em></h2>
+      <p style="font-size:16px;color:var(--text-dim);line-height:1.7;margin-bottom:32px;font-weight:300;">Built around your clinic or studio. Running 24/7 so you never miss a lead.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;border-radius:12px;border:1px solid var(--border);">
+          <div style="width:32px;height:32px;background:var(--accent-light);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;font-size:13px;"><i class="fas fa-check"></i></div>
+          <span style="font-size:14px;color:var(--text);font-weight:500;">Live in 7 days, no tech skills needed</span>
         </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;border-radius:12px;border:1px solid var(--border);">
+          <div style="width:32px;height:32px;background:var(--accent-light);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;font-size:13px;"><i class="fas fa-check"></i></div>
+          <span style="font-size:14px;color:var(--text);font-weight:500;">Every enquiry gets an instant reply, any time of day</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;border-radius:12px;border:1px solid var(--border);">
+          <div style="width:32px;height:32px;background:var(--accent-light);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;font-size:13px;"><i class="fas fa-check"></i></div>
+          <span style="font-size:14px;color:var(--text);font-weight:500;">Appointments booked automatically, reminders sent</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;border-radius:12px;border:1px solid var(--border);">
+          <div style="width:32px;height:32px;background:var(--accent-light);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;font-size:13px;"><i class="fas fa-check"></i></div>
+          <span style="font-size:14px;color:var(--text);font-weight:500;">Review requests sent after every visit</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;border-radius:12px;border:1px solid var(--border);">
+          <div style="width:32px;height:32px;background:var(--accent-light);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;font-size:13px;"><i class="fas fa-check"></i></div>
+          <span style="font-size:14px;color:var(--text);font-weight:500;">Lapsed clients re-engaged on autopilot</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="what" id="what">
+  <div class="what-inner">
+    <div class="what-header fade-in">
+      <div class="section-tag" style="text-align:center;">What We Build</div>
+      <h2>Everything Your Studio <em>Needs</em> to Run Itself</h2>
+      <p>Each system is scoped to your specific setup and built in under a week.</p>
+    </div>
+    <div class="what-grid">
+      <div class="what-card fade-in">
+        <div class="what-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Instant Lead Response</h3>
+        <p>Every enquiry gets a warm, professional reply within seconds. Day or night. No one slips through while you are with a client.</p>
+      </div>
+      <div class="what-card fade-in">
+        <div class="what-icon"><i class="fas fa-calendar-check"></i></div>
+        <h3>Automated Booking</h3>
+        <p>Prospects book straight into your calendar without the back-and-forth. Reminders go out automatically to cut no-shows.</p>
+      </div>
+      <div class="what-card fade-in">
+        <div class="what-icon"><i class="fas fa-paper-plane"></i></div>
+        <h3>Follow-Up Sequences</h3>
+        <p>Leads who do not book on the first touch get a multi-step follow-up. Most conversions happen after touch 3 or 4.</p>
+      </div>
+      <div class="what-card fade-in">
+        <div class="what-icon"><i class="fas fa-star"></i></div>
+        <h3>Review Automation</h3>
+        <p>After every visit, a review request goes out automatically. Consistent reviews without you remembering to ask.</p>
+      </div>
+      <div class="what-card fade-in">
+        <div class="what-icon"><i class="fas fa-rotate-left"></i></div>
+        <h3>Client Re-engagement</h3>
+        <p>Clients who have not visited in 60 or 90 days get a personal-feeling message to bring them back before they forget you.</p>
+      </div>
+      <div class="what-card fade-in">
+        <div class="what-icon"><i class="fas fa-chart-simple"></i></div>
+        <h3>Dashboard and Visibility</h3>
+        <p>A clean view of enquiries, bookings, and revenue so you can see what is working without digging through spreadsheets.</p>
       </div>
     </div>
   </div>
@@ -326,8 +411,11 @@ footer{padding:60px 32px 40px;background:var(--bg);border-top:1px solid var(--bo
 
 <section class="how" id="how">
   <div class="how-inner">
-    <h2>From Audit to <em>Running</em> in 7 Days</h2>
-    <p>No tech knowledge needed. No long setup. No ongoing management from you.</p>
+    <div class="how-header fade-in">
+      <div class="section-tag" style="text-align:center;">The Process</div>
+      <h2>From Audit to <em>Running</em> in 7 Days</h2>
+      <p>No tech knowledge needed. No long setup. No ongoing management from you.</p>
+    </div>
     <div class="steps">
       <div class="step fade-in">
         <div class="step-num">01</div>
@@ -355,37 +443,50 @@ footer{padding:60px 32px 40px;background:var(--bg);border-top:1px solid var(--bo
 
 <section class="outcomes" id="outcomes">
   <div class="outcomes-inner">
-    <h2>Real <em>Outcomes</em>. Not Features.</h2>
-    <p>What happens when your clinic or studio runs on systems instead of manual admin.</p>
+    <div class="section-tag fade-in">Results</div>
+    <h2 class="fade-in">Real <em>Outcomes</em>. Not Features.</h2>
+    <p class="fade-in">What happens when your clinic or studio runs on systems instead of manual admin.</p>
     <div class="outcome-grid">
       <div class="outcome-card fade-in"><div class="outcome-num">15+</div><div class="outcome-label">Hours Back/Week</div><p class="outcome-desc">Your time returned to clients and sessions, not chasing enquiries.</p></div>
       <div class="outcome-card fade-in"><div class="outcome-num">7</div><div class="outcome-label">Days to Live</div><p class="outcome-desc">Most builds are live within a week. Not a 3-month agency project.</p></div>
       <div class="outcome-card fade-in"><div class="outcome-num">40+</div><div class="outcome-label">Clinics and Studios Served</div><p class="outcome-desc">Built for wellness clinics, physio practices, pilates studios, and gyms.</p></div>
       <div class="outcome-card fade-in"><div class="outcome-num">5.0</div><div class="outcome-label">Client Rating</div><p class="outcome-desc">Every client sees the exact scope before anything starts. No surprises.</p></div>
       <div class="outcome-card fade-in"><div class="outcome-num">0</div><div class="outcome-label">Hidden Fees</div><p class="outcome-desc">Fixed price. Clear scope. You know exactly what you are getting.</p></div>
-      <div class="outcome-card fade-in"><div class="outcome-num">16yr</div><div class="outcome-label">Years Sales Background</div><p class="outcome-desc">Systems designed by someone who understands client acquisition, not just technology.</p></div>
+      <div class="outcome-card fade-in"><div class="outcome-num">16yr</div><div class="outcome-label">Sales Background</div><p class="outcome-desc">Systems designed by someone who understands client acquisition, not just technology.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="video-section">
+  <div class="video-inner">
+    <div class="video-wrapper">
+      <iframe src="https://player.vimeo.com/video/1199282017?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Hunter Engine"></iframe>
     </div>
   </div>
 </section>
 
 <section class="pricing" id="pricing">
   <div class="pricing-inner">
-    <h2>Priced for <em>Your Build</em></h2>
-    <p class="pricing-statement">Every build is scoped and priced after the audit based on your specific situation. I do not sell packages. I scope what you actually need and price it clearly before anything starts.</p>
-    <p class="pricing-start"><strong>Most projects start at $2,500.</strong> All include a clear scope before anything begins.</p>
-    <a href="https://tally.so/r/44pWdd" class="cta-btn" style="margin-top:8px;"><i class="fas fa-calendar-check"></i> Book a Free AI Ops Audit</a>
+    <div class="section-tag fade-in" style="text-align:center;">Pricing</div>
+    <h2 class="fade-in">Priced for <em>Your Build</em></h2>
+    <div class="pricing-box fade-in">
+      <p class="pricing-statement">Every build is scoped and priced after the audit based on your specific situation. I do not sell packages. I scope what you actually need and price it clearly before anything starts.</p>
+      <p class="pricing-start"><strong>Most projects start at $2,500.</strong> All include a clear scope before anything begins.</p>
+      <a href="https://tally.so/r/44pWdd" class="btn-primary"><i class="fas fa-calendar-check"></i> Book a Free AI Ops Audit</a>
+    </div>
   </div>
 </section>
 
 <section class="testimonials" id="testimonials">
   <div class="testimonials-inner">
-    <h2>What Clients <em>Actually Say</em></h2>
-    <p>One result. No fluff.</p>
+    <div class="section-tag fade-in">What Clients Say</div>
+    <h2 class="fade-in">One <em>Real</em> Result</h2>
+    <p class="fade-in">No fluff.</p>
     <div class="t-single fade-in">
       <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <div class="t-text">"Barbara built our client follow-up system in a week. Our no-show rate dropped and we started collecting reviews automatically. It runs without us touching it."</div>
       <div class="t-author">
-        <div class="t-avatar">B</div>
+        <div class="t-avatar">P</div>
         <div>
           <div class="t-name">Pilates Studio Owner</div>
           <div class="t-role">Sydney, Australia</div>
@@ -399,28 +500,31 @@ footer{padding:60px 32px 40px;background:var(--bg);border-top:1px solid var(--bo
 <section class="blog" id="blog">
   <div class="blog-inner">
     <div class="blog-header">
-      <h2>From the <em>Field</em></h2>
+      <div>
+        <div class="section-tag">From the Field</div>
+        <h2>Latest <em>Insights</em></h2>
+      </div>
       <a href="#newsletter" class="blog-read">Subscribe for new posts <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="blog-grid">
       <div class="blog-card fade-in">
         <div class="blog-tag">AI News</div>
-        <h3>What OpenAI's Agent Push Means for B2B Founders Right Now</h3>
-        <p>OpenAI is not building a chatbot anymore. They are building an operating system. Here is what that shift actually means if you run a founder-led business.</p>
+        <h3>What OpenAI's Agent Push Means for Clinics and Studios Right Now</h3>
+        <p>AI is not a chatbot anymore. It is an operating system. Here is what that means for your practice.</p>
         <div class="blog-meta">6 min read · June 2026</div>
         <a href="/blog-ai-news-openai-agents" class="blog-read">Read more <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="blog-card fade-in">
         <div class="blog-tag">AI Tools</div>
-        <h3>The Only 4 AI Tools Worth Paying For in 2026 (If You Run a B2B Business)</h3>
-        <p>Most AI tools are demos disguised as products. These four are the ones that actually produce output a B2B founder can use to close more deals.</p>
+        <h3>The Only 4 AI Tools Worth Paying For in 2026 (If You Run a Service Business)</h3>
+        <p>Most AI tools are demos disguised as products. These four actually produce output you can use.</p>
         <div class="blog-meta">5 min read · May 2026</div>
         <a href="/blog-ai-tools-2026" class="blog-read">Read more <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="blog-card fade-in">
         <div class="blog-tag">Automation</div>
-        <h3>How to Build a Lead Follow-Up System That Runs While You Sleep</h3>
-        <p>Most founders follow up once and move on. The data says most deals close after five or more touches. Here is the system that closes that gap automatically.</p>
+        <h3>How to Build a Client Follow-Up System That Runs While You Sleep</h3>
+        <p>Most studio owners follow up once and move on. Here is the system that closes the gap automatically.</p>
         <div class="blog-meta">7 min read · April 2026</div>
         <a href="/blog-followup-automation" class="blog-read">Read more <i class="fas fa-arrow-right"></i></a>
       </div>
@@ -430,18 +534,19 @@ footer{padding:60px 32px 40px;background:var(--bg);border-top:1px solid var(--bo
 
 <section class="faq" id="faq">
   <div class="faq-inner">
-    <h2>Common <em>Questions</em></h2>
-    <p class="faq-intro">The things people ask before booking. Answered straight.</p>
+    <div class="section-tag fade-in" style="text-align:center;">FAQ</div>
+    <h2 class="fade-in">Common <em>Questions</em></h2>
+    <p class="faq-intro fade-in">The things people ask before booking. Answered straight.</p>
     <div class="faq-item fade-in">
-      <div class="faq-q">How do you build a system in 7 days? <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-q">How do you build a system in 7 days?</div>
       <div class="faq-a">Because I scope it tightly before anything starts. The audit call maps your exact situation. I build only what you need, nothing else. Most of the delay in typical projects comes from back-and-forth on scope. We cut that out entirely before day one.</div>
     </div>
     <div class="faq-item fade-in">
-      <div class="faq-q">What happens if I need changes after launch? <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-q">What happens if I need changes after launch?</div>
       <div class="faq-a">Every build includes a handover so you understand what was built and why. Small tweaks you can handle yourself. Bigger changes are scoped and priced separately, same way as the original build. No retainers, no locked-in commitments.</div>
     </div>
     <div class="faq-item fade-in">
-      <div class="faq-q">Do I need technical skills to run the system? <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-q">Do I need technical skills to run the system?</div>
       <div class="faq-a">No. The systems I build are designed to run without you touching them. The handover covers exactly what you need to monitor and what to do if something looks off. Most clients check a dashboard once a day and that is it.</div>
     </div>
   </div>
@@ -450,7 +555,7 @@ footer{padding:60px 32px 40px;background:var(--bg);border-top:1px solid var(--bo
 <section class="newsletter" id="newsletter">
   <div class="newsletter-inner">
     <h2>Stay in the <em>Loop</em></h2>
-    <p>Short posts on AI systems, outbound, and ops. No fluff. Sent when there is something worth saying.</p>
+    <p>Short posts on AI systems, client retention, and studio ops. No fluff. Sent when there is something worth saying.</p>
     <form class="newsletter-form" onsubmit="handleSubscribe(event)">
       <input type="email" placeholder="Your email address" required id="newsletter-email">
       <button type="submit">Subscribe</button>
@@ -465,19 +570,23 @@ footer{padding:60px 32px 40px;background:var(--bg);border-top:1px solid var(--bo
     <p>You decide if you want to fix it. No pitch. No pressure. Just a clear map of where your clinic or studio is losing clients and revenue right now.</p>
     <a href="https://tally.so/r/44pWdd" class="cta-btn"><i class="fas fa-calendar-check"></i> Book a Free AI Ops Audit</a>
     <div class="cta-trust">
-      <span><i class="fas fa-check" style="color:var(--accent);margin-right:6px;"></i>Free 30-min call</span>
-      <span><i class="fas fa-check" style="color:var(--accent);margin-right:6px;"></i>Clear scope before you pay anything</span>
-      <span><i class="fas fa-check" style="color:var(--accent);margin-right:6px;"></i>Live in 7 days, no tech skills needed</span>
+      <span><i class="fas fa-check"></i> Free 30-min call</span>
+      <span><i class="fas fa-check"></i> Clear scope before you pay anything</span>
+      <span><i class="fas fa-check"></i> Live in 7 days, no tech skills needed</span>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-left"><div class="logo-icon">H</div><span>Hunter <em>Engine</em></span></div>
+    <div class="footer-left">
+      <div class="footer-logo-icon">H</div>
+      <span>Hunter <em>Engine</em></span>
+    </div>
     <div class="footer-right">
       <a href="#pain">The Problem</a>
       <a href="#how">How It Works</a>
+      <a href="#blog">Blog</a>
       <a href="#contact">Book Audit</a>
       <a href="#">Privacy</a>
     </div>
@@ -487,8 +596,8 @@ footer{padding:60px 32px 40px;background:var(--bg);border-top:1px solid var(--bo
 <script>
 window.addEventListener('scroll',function(){
   const header=document.getElementById('header');
-  if(window.scrollY>50)header.style.background='rgba(10,10,15,0.95)';
-  else header.style.background='rgba(10,10,15,0.85)';
+  if(window.scrollY>50)header.style.boxShadow='0 2px 20px rgba(0,0,0,0.08)';
+  else header.style.boxShadow='none';
 });
 const observer=new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible');});
@@ -511,28 +620,17 @@ async function handleSubscribe(e){
   try{
     const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
     const data=await r.json();
-    if(data.success){
-      msg.style.color='var(--accent)';
-      msg.textContent='You are on the list.';
-      document.getElementById('newsletter-email').value='';
-    } else {
-      msg.style.color='#ef4444';
-      msg.textContent='Something went wrong. Try again.';
-    }
-  } catch(err){
-    msg.style.color='#ef4444';
-    msg.textContent='Something went wrong. Try again.';
-  }
-  btn.textContent='Subscribe';
-  btn.disabled=false;
+    if(data.success){msg.style.color='var(--accent)';msg.textContent='You are on the list.';document.getElementById('newsletter-email').value='';}
+    else{msg.style.color='#DC2626';msg.textContent='Something went wrong. Try again.';}
+  }catch(err){msg.style.color='#DC2626';msg.textContent='Something went wrong. Try again.';}
+  btn.textContent='Subscribe';btn.disabled=false;
 }
 function toggleMenu(){
   const nav=document.querySelector('nav');
   const current=nav.style.display;
   if(current==='flex'){nav.style.display='';nav.style='';}
-  else{nav.style.display='flex';nav.style.position='absolute';nav.style.top='68px';nav.style.left='0';nav.style.right='0';nav.style.background='var(--bg)';nav.style.flexDirection='column';nav.style.padding='24px 32px';nav.style.borderBottom='1px solid var(--border)';nav.style.gap='20px';nav.style.zIndex='999';}
+  else{nav.style.display='flex';nav.style.position='absolute';nav.style.top='70px';nav.style.left='0';nav.style.right='0';nav.style.background='#F7F5F0';nav.style.flexDirection='column';nav.style.padding='24px 32px';nav.style.borderBottom='1px solid var(--border)';nav.style.gap='20px';nav.style.zIndex='999';}
 }
 </script>
 </body>
 </html>
-    
